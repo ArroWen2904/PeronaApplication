@@ -2,6 +2,7 @@ package arro.perona.application.ui.Weather
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
+import arro.perona.application.R
 import arro.perona.application.repositories.ResponseWeather
 import arro.perona.application.repositories.WeatherElement
 import arro.perona.application.utils.ApiUtil
@@ -18,7 +19,7 @@ class WeatherViewModel(val disposable: CompositeDisposable): ViewModel() {
 
     private val TAG = "MainViewModel"
     val weatherElement: SingleLiveEvent<WeatherElement> = SingleLiveEvent()
-    val toastMessage: SingleLiveEvent<String> = SingleLiveEvent()
+    val toastMessage: SingleLiveEvent<Int> = SingleLiveEvent()
 
     fun getWeather(){
         disposable.add(
@@ -37,7 +38,7 @@ class WeatherViewModel(val disposable: CompositeDisposable): ViewModel() {
 
                     override fun onError(e: Throwable?) {
                         Log.w(TAG, "onError")
-                        toastMessage.value = "請檢察網路是否正常連線"
+                        toastMessage.value = R.string.please_check_network
                     }
                 })
         )

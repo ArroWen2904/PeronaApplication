@@ -34,10 +34,10 @@ class WeatherActivity : AppCompatActivity() {
         viewModel.getWeather()
 
         sharedPreferences = getSharedPreferences(getString(R.string.app_name), Context.MODE_PRIVATE)
-        if (sharedPreferences.getBoolean("firstEnter", true))
-            sharedPreferences.edit().putBoolean("firstEnter", false).apply()
+        if (sharedPreferences.getBoolean(getString(R.string.first_enter), true))
+            sharedPreferences.edit().putBoolean(getString(R.string.first_enter), false).apply()
         else{
-            viewModel.toastMessage.value = "歡迎回來"
+            viewModel.toastMessage.value = R.string.welcome_back
         }
     }
 
@@ -53,7 +53,7 @@ class WeatherActivity : AppCompatActivity() {
         })
 
         viewModel.toastMessage.observe(this, Observer {
-            Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(it), Toast.LENGTH_SHORT).show()
         })
 
     }

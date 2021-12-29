@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">PeronaApplication</string>
+    <string name="first_enter">firstEnter</string>
+    <string name="welcome_back">歡迎回來</string>
+    <string name="please_check_network">請檢察網路是否正常連線</string>
 </resources>
