@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.sub.SubActivity">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="arro.perona.application.ui.sub.SubViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_top"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@color/green"
+            android:textColor="@color/white"
+            android:text="A"
+            android:textSize="30dp"
+            android:gravity="center"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <View
+            android:id="@+id/vw"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/red"
+            app:layout_constraintStart_toEndOf="@+id/tv_top"
+            app:layout_constraintEnd_toStartOf="@+id/tv_bottom"
+            app:layout_constraintTop_toBottomOf="@+id/tv_top"
+            app:layout_constraintBottom_toTopOf="@+id/ll_content"/>
+
+        <LinearLayout
+            android:id="@+id/ll_content"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/red"
+            android:orientation="vertical"
+            android:gravity="top|center_horizontal"
+            app:layout_constraintStart_toEndOf="@+id/tv_top"
+            app:layout_constraintEnd_toStartOf="@id/tv_bottom"
+            app:layout_constraintTop_toBottomOf="@+id/vw"
+            app:layout_constraintBottom_toTopOf="@+id/tv_bottom">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_startTime"
+                android:text="@{viewModel.weatherTime.startTime}"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_endTime"
+                android:text="@{viewModel.weatherTime.endTime}"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_parameter"
+                android:text="@{viewModel.weatherTime.parameter.parameterName + viewModel.weatherTime.parameter.parameterUnit}"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_bottom"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@color/green"
+            android:textColor="@color/white"
+            android:text="B"
+            android:textSize="30dp"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
